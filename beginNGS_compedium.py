@@ -1195,7 +1195,6 @@ columns = [col for col in vcf_df.columns if col not in ['individual_id', 'sample
 
 
 validation_data = pd.DataFrame({
-    "genome_id": [949581, 963614, 949581, 963614, 1033213, 1053847, 1033213, 1053847],
     "contig": ["chr18", "chr18","chr18","chr18","chr18","chr18","chr18","chr18"],
     "pos_start": [23568833, 23573531, 23539394, 23544402, 23536736, 23533472, 23539859, 23539402],
     "ref": ["ACT", "GCA", "G", "G", "A", "A", "T", "G"],
