@@ -23,9 +23,6 @@ logger = logging.getLogger(__name__)
 
 pd.set_option('display.max_rows', None)
 
-key = Fernet.generate_key() #this is your "password"
-cipher_suite = Fernet(key)
-
 #TileDB-VCF array to use
 TILEDB_VCF_URI = {}
 TILEDB_VCF_URI['RADYPATIENTS'] = "tiledb://Rady_Childrens_Institute_Genomic_Medicine/####-####-####-####-####"
@@ -71,13 +68,13 @@ formatted_datetime = current_datetime.strftime("%Y%m%d%H%M%S")
 REPORT_URI = 'tiledb://Rady_Childrens_Institute_Genomic_Medicine/s3://tiledb-rchsd-arrays/production/'+FINAL_REPORT_BASE_NAME[VARIANT_SELECTION]+"_"+formatted_datetime
 
 #patterns of inheritance
-NBS_POI_FILE = "../../data/phase2_beginngs_moi_03292024.txt"
+NBS_POI_FILE = "../../data/phase2_beginngs_moi.txt"
 
-BLOCKLIST_FILE = "../../data/prelim_blocklist_03292024_dups_removed.csv"
+BLOCKLIST_FILE = "../../data/prelim_blocklist_dups_removed.csv"
 
 USE_BLOCKLIST = False
 
-SAMPLE_USE_FILE = '../../data/rady_sample_approved_addl_use_indicator_19JUN2023.csv'
+SAMPLE_USE_FILE = '../../data/rady_sample_approved_addl_use_indicator.csv'
 
 today_date = datetime.datetime.now().strftime("%d%m%Y")
 namespace = "Rady_Childrens_Institute_Genomic_Medicine"
@@ -231,7 +228,7 @@ len(sm_samples)
 
 
 if not os.path.isfile(NBS_POI_FILE):
-    tiledb.cloud.file.export_file("tiledb://Rady_Childrens_Institute_Genomic_Medicine/10fcd805-7a4b-4ed6-8486-f46299cade58",output_uri=NBS_POI_FILE)
+    tiledb.cloud.file.export_file("tiledb://Rady_Childrens_Institute_Genomic_Medicine/####-####-####-####",output_uri=NBS_POI_FILE)
 else:
     print(f"NBS_POI_FILE already exists {NBS_POI_FILE}")
 
